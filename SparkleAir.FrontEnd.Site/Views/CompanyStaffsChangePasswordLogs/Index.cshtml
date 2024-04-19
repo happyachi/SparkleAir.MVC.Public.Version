@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SparkleAir.Infa.ViewModel.CompanyAndPermission.CompanyStaffsChangePasswordLogIndexVm>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>員工更換密碼紀錄</h2>
+
+
+<table class="table table_jq">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyStaffId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyStaffName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UpdateTime)
+            </th>
+
+        </tr>
+        </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyStaffId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CompanyStaffName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdateTime)
+                </td>
+
+            </tr>
+        }
+        </tbody>
+</table>

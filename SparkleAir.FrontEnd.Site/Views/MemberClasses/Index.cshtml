@@ -1,0 +1,77 @@
+﻿@model IEnumerable<SparkleAir.Infa.ViewModel.Members.MemberClassIndexVm>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>會員等級設定</h2>
+
+<p>
+    <a href='@Url.Action("Create")' class="btn btn-sm btn-dark ps-3 pe-3 btn-create"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;新增</a>
+</p>
+<table class="table table_jq">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ClassOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MileageStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MileageEnd)
+            </th>
+            <th>
+               
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassOrder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MileageStart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MileageEnd)
+        </td>
+        <td>
+            <a href='@Url.Action("Edit/")@item.Id' class="btn btn-sm btn-dark ps-2 pe-2 btn-edit"><i class="fa-solid fa-pen-to-square"></i>&nbsp;&nbsp;編輯</a>
+        </td>
+    </tr>
+}
+        </tbody>
+</table>
+<script>
+
+    /*刪除前確認事件*/
+    const btnDelete = document.querySelectorAll('.btn-delete');
+    btnDelete.forEach((item) => {
+        item.addEventListener('click', function () {
+            Swal.fire({
+                title: "你確定要刪除嗎？",
+                showConfirmButton: false,
+                showDenyButton: true,
+                showCancelButton: true,
+                denyButtonText: `確定刪除`,
+                cancelButtonText: `取消`
+            }).then((result) => {
+                if (result.isDenied) {
+                    window.location.href = this.dataset.href;
+                } 
+            });
+        });
+    });
+
+
+    
+</script>

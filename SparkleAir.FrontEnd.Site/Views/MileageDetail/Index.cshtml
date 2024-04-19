@@ -1,0 +1,85 @@
+﻿@model IEnumerable<SparkleAir.Infa.ViewModel.MileageDetails.MileageDetailIndexVm>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>里程管理</h2>
+
+<p>
+    <a href='@Url.Action("Create")' class="btn btn-sm btn-dark ps-3 pe-3 btn-create"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;新增</a>
+</p>
+<table class="table table_jq">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MermberIsd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalMile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OriginalMile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChangeMile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FinalMile)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MileValidity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MileReason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChangeTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MermberIsd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalMile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OriginalMile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChangeMile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FinalMile)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MileValidity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MileReason)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChangeTime)
+                </td>
+                <td>
+                    @*<a href='@Url.Action("Edit/")@item.Id' class="btn btn-sm btn-dark ps-2 pe-2 btn-edit"><i class="fa-solid fa-pen-to-square"></i>&nbsp;&nbsp;編輯</a>*@ 
+                    @*<a href='@Url.Action("Details/")@item.Id' class="btn btn-sm btn-dark ps-2 pe-2 btn-detail"><i class="fa-solid fa-file"></i>&nbsp;&nbsp;詳細資訊</a> |*@
+                    @*<a href='@Url.Action("Delete/")@item.Id' class="btn btn-sm btn-danger ps-2 pe-2 btn-delete"><i class="fa-solid fa-trash"></i>&nbsp;&nbsp;刪除</a>*@
+                </td>
+            </tr>
+        }
+        </tbody>
+</table>

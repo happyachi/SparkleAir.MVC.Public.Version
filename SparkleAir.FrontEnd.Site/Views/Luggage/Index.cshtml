@@ -1,0 +1,85 @@
+﻿@model IEnumerable<SparkleAir.Infa.ViewModel.Luggage.LuggageIndexVm>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>託運管理</h2>
+
+<p>
+    <a href='@Url.Action("Create")' class="btn btn-sm btn-dark ps-3 pe-3 btn-create"><i class="fa-solid fa-plus"></i>&nbsp;&nbsp;新增</a>
+</p>
+<table class="table table_jq">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AirFlightManagementsId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OriginalPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AirFlightManagementsId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OriginalPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BookPrice)
+                </td>
+                <td>
+                    <a href='@Url.Action("Edit/")@item.Id' class="btn btn-sm btn-dark ps-2 pe-2 btn-edit"><i class="fa-solid fa-pen-to-square"></i>&nbsp;&nbsp;編輯</a> |
+                    @*<a href='@Url.Action("Details/")@item.Id' class="btn btn-sm btn-dark ps-2 pe-2 btn-detail"><i class="fa-solid fa-file"></i>&nbsp;&nbsp;詳細資訊</a> |*@
+                    <a href='@Url.Action("Delete/")@item.Id' class="btn btn-sm btn-danger ps-2 pe-2 btn-delete"><i class="fa-solid fa-trash"></i>&nbsp;&nbsp;刪除</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*刪除按鈕的alert*@
+<script>
+    function showDeleteConfirmation(url) {
+        Swal.fire({
+            title: "確定要刪除嗎？",
+            text: "此操作將無法還原！",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Delete！"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "刪除成功！",
+                    text: "此筆已被刪除。",
+                    icon: "success"
+                }).then(() => {
+                    // 在確認刪除後，執行實際的刪除操作
+                    window.location.href = url;
+                });
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener("click", function (e) {
+            if (e.target.classList.contains("btn-delete")) {
+                e.preventDefault();
+                var deleteUrl = e.target.getAttribute("href");
+                showDeleteConfirmation(deleteUrl);
+            }
+        });
+    });
+</script>
